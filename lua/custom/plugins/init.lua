@@ -20,7 +20,7 @@ return {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function() 
+    config = function()
       local harpoon = require("harpoon")
 
       harpoon:setup()
@@ -36,7 +36,6 @@ return {
       -- Toggle previous & next buffers stored within Harpoon list
       vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
       vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-
     end,
 
   },
@@ -44,7 +43,7 @@ return {
 
   {
     "lervag/vimtex",
-    lazy = false,     -- we don't want to lazy load VimTeX
+    lazy = false, -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
       -- VimTeX configuration goes here, e.g.
@@ -52,6 +51,7 @@ return {
     end
 
   },
+
 
 
 
