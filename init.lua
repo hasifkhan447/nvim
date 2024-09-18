@@ -101,6 +101,10 @@ vim.g.have_nerd_font = false
 
 vim.opt.swapfile = false
 vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
+vim.opt.wrap = true
+vim.opt.textwidth = 80
 
 -- Make line numbers default
 vim.opt.number = true
@@ -111,6 +115,7 @@ vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
+vim.opt.conceallevel = 2
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -575,6 +580,12 @@ require('lazy').setup({
         on_attach = LspAttach,
         capabilities = capabilities
       }
+
+
+      lspconfig['clangd'].setup {
+        on_attach = LspAttach,
+        capabilities = capabilities
+      }
     end,
   },
 
@@ -639,6 +650,7 @@ require('lazy').setup({
             'rafamadriz/friendly-snippets',
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
+              require('luasnip.loaders.from_lua').lazy_load({ paths = "~/.config/nvim/LuaSnip" })
             end,
           },
         },
@@ -656,6 +668,7 @@ require('lazy').setup({
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
+
 
       cmp.setup {
         snippet = {
@@ -723,6 +736,10 @@ require('lazy').setup({
           { name = 'path' },
         },
       }
+
+      require("luasnip").config.set_config({
+        enable_autosnippets = true
+      })
     end,
   },
 
